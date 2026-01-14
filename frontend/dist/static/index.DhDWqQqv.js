@@ -1,1 +1,0 @@
-import{u as e,a as r}from"./vue-router.kfYy4LLd.js";import{c as t,o as a}from"./@vue.CTPu-uAZ.js";const o={__name:"index",setup(o){const s=e(),u=r(),p=u.params.path,n={...u.query};return delete n.t,s.replace({path:"/"+p,query:n}).then(()=>{window.scrollTo(0,0)}),(e,r)=>(a(),t("div"))}};export{o as default};
