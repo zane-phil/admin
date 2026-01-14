@@ -9,7 +9,7 @@ const pathResolve = (dir) => {
 };
 
 let alias = {
-    '@': pathResolve('./src/'),
+    '@/*': pathResolve('./src/*'),
 }
 
 export default defineConfig({
