@@ -40,3 +40,7 @@ package-lock.json # 锁定安装包版本的文件，镜像中依赖由 `package
 __pycache__      # Python 缓存字节码的目录
 .env             # 环境变量文件，通常包含敏感信息，务必忽略！
 .venv            # 另一种常见的虚拟环境目录名称
+
+# 在项目根目录的 .gitignore 文件中添加：
+__pycache__/
+.idea/
