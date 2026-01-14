@@ -1,0 +1,104 @@
+<!--
+//此内容不能删除
+Program dvlyadmin-mini
+Copyright by lybbn
+Author:lybbn
+QQ:1042594286
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content='django-vue-lyadmin mini'>
+        <meta content='http://www.lybbn.cn' author="lybbn" contact="qq:1042594286">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="dvlyadmin-mini 基于RBAC模型的权限控制的基础开发平台，权限达到列级别，前后端分离，后端采用django + django-rest-framework，前端采用基于 vue3 + Setup Js + vite + element plus"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="icon" href="./favicon.ico">
+        <title>dvlyadmin-mini</title>
+        <style>
+            .app-loading {position: absolute;top:0px;left:0px;right:0px;bottom:0px;display: flex;justify-content: center;align-items: center;flex-direction: column;background:fff;transition: background-color 0.3s ease;}
+            .app-loading__logo {margin-bottom: 30px;}
+            .app-loading__logo img {width: 90px;vertical-align: bottom;animation: floatUpDown 2.5s ease-in-out infinite;}
+            .app-loading__loader {box-sizing: border-box;width: 35px;height: 35px;border: 5px solid transparent;border-top-color: #000;border-radius: 50%;animation: .5s loader linear infinite;position: relative;}
+            .app-loading__loader:before {box-sizing: border-box;content: '';display: block;width: inherit;height: inherit;position: absolute;top: -5px;left: -5px;border: 5px solid #ccc;border-radius: 50%;opacity: .5;}
+            .app-loading__title {font-size: 24px;color: #666;margin-top: 30px;}
+            .dark .app-loading {background: #222225;}
+            .dark .app-loading__loader {border-top-color: #fff;}
+            .dark .app-loading__title {color: #d0d0d0;}
+            @keyframes floatUpDown {
+                0%, 100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-15px);
+                }
+            }
+            @keyframes loader {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+        <script>
+            var _hmt = _hmt || [];
+            var hmid = "33e0b6798fd8809c21ef51bc99e3149e";
+            (function () { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?" + hmid; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })();
+        </script>
+      <script type="module" crossorigin src="/static/index.CmK67jVc.js"></script>
+      <link rel="modulepreload" crossorigin href="/static/@vue.CTPu-uAZ.js">
+      <link rel="modulepreload" crossorigin href="/static/lodash-es.inYd2OMh.js">
+      <link rel="modulepreload" crossorigin href="/static/@vueuse.CxA-JytG.js">
+      <link rel="modulepreload" crossorigin href="/static/@element-plus.DmP6zw14.js">
+      <link rel="modulepreload" crossorigin href="/static/@popperjs.CT_jBSb5.js">
+      <link rel="modulepreload" crossorigin href="/static/@ctrl.D-8vaqgC.js">
+      <link rel="modulepreload" crossorigin href="/static/clipboard.DkQLcScs.js">
+      <link rel="modulepreload" crossorigin href="/static/dayjs.Gu-B5VJn.js">
+      <link rel="modulepreload" crossorigin href="/static/async-validator.j0i5Y79Y.js">
+      <link rel="modulepreload" crossorigin href="/static/memoize-one.BAtLgO95.js">
+      <link rel="modulepreload" crossorigin href="/static/normalize-wheel-es.BhHBPXsK.js">
+      <link rel="modulepreload" crossorigin href="/static/@floating-ui.CzXNizXq.js">
+      <link rel="modulepreload" crossorigin href="/static/element-plus.BU70F6Fx.js">
+      <link rel="modulepreload" crossorigin href="/static/axios.DpIj8wd6.js">
+      <link rel="modulepreload" crossorigin href="/static/crypto-js.CDMBIImi.js">
+      <link rel="modulepreload" crossorigin href="/static/js-cookie.Ch5AnFJE.js">
+      <link rel="modulepreload" crossorigin href="/static/pinia.zQpyPaWK.js">
+      <link rel="modulepreload" crossorigin href="/static/xe-utils.D2X37hqE.js">
+      <link rel="modulepreload" crossorigin href="/static/sortablejs.C7MwSjUq.js">
+      <link rel="modulepreload" crossorigin href="/static/@intlify.CzB25nlE.js">
+      <link rel="modulepreload" crossorigin href="/static/vue-i18n.Diqqvor5.js">
+      <link rel="modulepreload" crossorigin href="/static/file-saver.B7Ix4MNR.js">
+      <link rel="modulepreload" crossorigin href="/static/destr.WfmzGWA8.js">
+      <link rel="modulepreload" crossorigin href="/static/deep-pick-omit.CDZeMyKV.js">
+      <link rel="modulepreload" crossorigin href="/static/pinia-plugin-persistedstate.C_byIVBZ.js">
+      <link rel="modulepreload" crossorigin href="/static/vue-router.kfYy4LLd.js">
+      <link rel="modulepreload" crossorigin href="/static/nprogress.CyzJYN2f.js">
+      <link rel="modulepreload" crossorigin href="/static/@tsparticles.Csp0zpCD.js">
+      <link rel="stylesheet" crossorigin href="/static/element-plus.Ba_xEelw.css">
+      <link rel="stylesheet" crossorigin href="/static/nprogress.BgDCIyLK.css">
+      <link rel="stylesheet" crossorigin href="/static/index.WITXI7w2.css">
+    </head>
+    <body>
+        <noscript>
+            <strong>很抱歉，dvlyadmin-mini 需要启用 JavaScript 才能正常运行。请启用后继续。</strong>
+        </noscript>
+        <div id="app" class="lybbn-panel">
+            <div class="app-loading lyloading_particles" id="lyloading_particles">
+                <div class="app-loading__logo">
+                    <img src="/static/logo.BsDfI8gK.png"/>
+                </div>
+                <div class="app-loading__loader"></div>
+                <div class="app-loading__title">加载中</div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var dark = window.localStorage.getItem('siteTheme');
+            if(dark && dark=="dark"){
+                document.documentElement.classList.add("dark")
+            }
+        </script>
+    </body>
+</html>
