@@ -44,3 +44,6 @@ __pycache__      # Python 缓存字节码的目录
 # 在项目根目录的 .gitignore 文件中添加：
 __pycache__/
 .idea/
+
+dist/
+node_modules/
