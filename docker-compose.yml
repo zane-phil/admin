@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  # ---------------------------------
+  # 1. MySQL 数据库
+  # ---------------------------------
+  db:
+    image: mysql:8.0
+    container_name: zane_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: dvlyadmin_mini
+      MYSQL_ROOT_PASSWORD: 123456 # 记得修改密码
+    volumes:
+      - db_data:/var/lib/mysql
+      # 自动初始化 SQL：注意路径修改为相对于根目录
+      - ./backend/dvlyadmin-mini.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - zane_net
+    # 生产环境建议不暴露端口，或改为 127.0.0.1:3306:3306
+    ports:
+      - "3306:3306"
+
+  # ---------------------------------
+  # 2. Redis 缓存
+  # ---------------------------------
+  redis:
+    image: redis:alpine
+    container_name: zane_redis
+    restart: always
+    networks:
+      - zane_net
+
+  # ---------------------------------
+  # 3. Django 后端 (Backend)
+  # ---------------------------------
+  backend:
+    build:
+      context: ./backend  # 构建上下文指向 backend 目录
+      dockerfile: docker_env/web/Dockerfile # 指向你提供的 Dockerfile
+    container_name: zane_backend
+    restart: always
+    # 启动命令
+    command: gunicorn application.wsgi:application --bind 0.0.0.0:8000 --workers 3
+    volumes:
+      - ./backend:/app             # 挂载代码
+      - static_vol:/app/static_collected # 共享静态文件卷
+      - media_vol:/app/media
+    depends_on:
+      - db
+      - redis
+    networks:
+      - zane_net
+
+  # ---------------------------------
+  # 4. Nginx 前端 + 反向代理 (Frontend)
+  # ---------------------------------
+  frontend:
+    build:
+      context: ./frontend # 构建上下文指向 frontend 目录
+      dockerfile: Dockerfile
+    container_name: zane_frontend
+    restart: always
+    ports:
+      - "80:80"  # 唯一的对外入口
+    volumes:
+      # 只需要挂载 Django 的静态资源，Vue 的资源已经在构建时打进镜像了
+      - static_vol:/usr/share/nginx/html/static
+      - media_vol:/usr/share/nginx/html/media
+    depends_on:
+      - backend
+    networks:
+      - zane_net
+
+# 定义持久化卷
+volumes:
+  db_data:
+  static_vol:
+  media_vol:
+
+# 定义网络
+networks:
+  zane_net:
