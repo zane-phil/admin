@@ -34,14 +34,14 @@ services:
   # ---------------------------------
   backend:
     build:
-      context: ./backend  # 构建上下文指向 backend 目录
+      context: ./backend # 构建上下文指向 backend 目录
       dockerfile: docker_env/web/Dockerfile # 指向你提供的 Dockerfile
     container_name: zane_backend
     restart: always
     # 启动命令
     command: gunicorn application.wsgi:application --bind 0.0.0.0:8000 --workers 3
     volumes:
-      - ./backend:/app             # 挂载代码
+      - ./backend:/app # 挂载代码
       - static_vol:/app/static_collected # 共享静态文件卷
       - media_vol:/app/media
     depends_on:
@@ -49,6 +49,12 @@ services:
       - redis
     networks:
       - zane_net
+    environment:
+      - DEBUG=False # 关掉调试模式！
+      - DB_HOST=db # 告诉代码连容器
+      - REDIS_HOST=redis
+      - DB_PASSWORD=your_strong_password
+      - ALLOWED_HOSTS=47.117.97.250,localhost
 
   # ---------------------------------
   # 4. Nginx 前端 + 反向代理 (Frontend)
@@ -60,7 +66,7 @@ services:
     container_name: zane_frontend
     restart: always
     ports:
-      - "80:80"  # 唯一的对外入口
+      - "80:80" # 唯一的对外入口
     volumes:
       # 只需要挂载 Django 的静态资源，Vue 的资源已经在构建时打进镜像了
       - static_vol:/usr/share/nginx/html/static

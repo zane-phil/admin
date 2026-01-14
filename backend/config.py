@@ -2,15 +2,18 @@
 # ************** mysql数据库 配置  ************** #
 # ================================================= #
 # 数据库类型 MYSQL/SQLITE3/POSTGRESQL
+import os
+
+
 DATABASE_TYPE = "MYSQL"
 # 数据库地址
-DATABASE_HOST = "db"
+DATABASE_HOST = os.getenv("DB_HOST", "127.0.0.1")
 # 数据库端口
 DATABASE_PORT = 3306
 # 数据库用户名
 DATABASE_USER = "root"
 # 数据库密码
-DATABASE_PASSWORD = "123456"
+DATABASE_PASSWORD = os.getenv("DB_PASSWORD", "123456")
 # 数据库名
 DATABASE_NAME = "dvlyadmin_mini"
 
@@ -19,7 +22,7 @@ DATABASE_NAME = "dvlyadmin_mini"
 # ================================================= #
 
 REDIS_PASSWORD = ''
-REDIS_HOST = 'redis'
+REDIS_HOST = os.getenv("REDIS_HOST", "127.0.0.1")
 REDIS_PORT = '6379'
 REDIS_URL = f'redis://:{REDIS_PASSWORD or ""}@{REDIS_HOST}:{REDIS_PORT}'
 
@@ -32,8 +35,8 @@ API_LOG_ENABLE = True
 API_LOG_METHODS = ['POST', 'UPDATE', 'DELETE', 'PUT']  # ['POST', 'DELETE']
 
 IS_DEMO = False #是否演示模式（演示模式只能查看无法保存、编辑、删除、新增）
-DEBUG = True #是否调试模式
-ALLOWED_HOSTS = ["*"]
+DEBUG = os.getenv("DEBUG", "True") == "True" #是否调试模式
+REDIS_HOST = os.getenv("REDIS_HOST", "127.0.0.1")
 IS_SINGLE_TOKEN = False #是否只允许单用户单一地点登录(只有一个人在线上)(默认多地点登录),只针对后台用户生效
 ALLOW_FRONTEND = True#是否关闭前端API访问
 LOGIN_ERROR_RETRY_TIMES = 0 #登录错误次数限制，0表示不限制
