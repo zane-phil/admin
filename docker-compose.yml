@@ -53,7 +53,7 @@ services:
       - DEBUG=False # 关掉调试模式！
       - DB_HOST=db # 告诉代码连容器
       - REDIS_HOST=redis
-      - DB_PASSWORD=your_strong_password
+      - DB_PASSWORD=123456
       - ALLOWED_HOSTS=47.117.97.250,localhost
 
   # ---------------------------------
