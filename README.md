@@ -1,4 +1,4 @@
-# DvlyAdmin Mini Project
+# Admin Project
 
 这是一个基于 **Django** 和 **Vue** 的前后端分离管理系统，采用 Docker 容器化部署。
 
