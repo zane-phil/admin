@@ -42,7 +42,7 @@ export default defineConfig({
         sourcemap: false,
         outDir: 'dist',
         emptyOutDir: true, // 构建前清空输出目录
-        assetsDir: 'static',
+        assetsDir: 'assets',
         chunkSizeWarningLimit: 2000,
         terserOptions: {
             output: {
@@ -58,9 +58,9 @@ export default defineConfig({
         },
         rollupOptions:{
             output:{
-                entryFileNames: `static/[name].[hash].js`,
-                chunkFileNames: `static/[name].[hash].js`,
-                assetFileNames: `static/[name].[hash].[ext]`,
+                entryFileNames: `assets/[name].[hash].js`,
+                chunkFileNames: `assets/[name].[hash].js`,
+                assetFileNames: `assets/[name].[hash].[ext]`,
                 manualChunks(id){
                     if (id.includes('node_modules')) {
                         return id.toString().split('node_modules/')[1].split('/')[0].toString();
