@@ -10,7 +10,7 @@
                         </div>
                         <div class="card-text">
                             <div class="card-title">用户总数</div>
-                            <div class="card-value">12,345</div>
+                            <div class="card-value">2</div>
                         </div>
                     </div>
                 </el-card>
