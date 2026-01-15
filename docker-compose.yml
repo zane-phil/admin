@@ -15,9 +15,6 @@ services:
       - ./backend/dvlyadmin-mini.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - zane_net
-    # 生产环境建议不暴露端口，或改为 127.0.0.1:3306:3306
-    ports:
-      - "3306:3306"
 
   # ---------------------------------
   # 2. Redis 缓存
